@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.Models;
+using PortfolioWebsite.Models;
 using System.Diagnostics;
 
-namespace MyPortfolioWebsite.Controllers
+namespace PortfolioWebsite.Controllers
 {
     public class HomeController : Controller
     {
