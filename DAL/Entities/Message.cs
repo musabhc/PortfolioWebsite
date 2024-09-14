@@ -1,4 +1,4 @@
-﻿namespace PortfolioWebsite.DAL.Entities
+﻿namespace MyPortfolioWebsite.DAL.Entities
 {
     public class Message
     {

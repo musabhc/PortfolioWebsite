@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PortfolioWebsite.DAL.Entities;
+using MyPortfolioWebsite.DAL.Entities;
 using System.Net;
 using System.Text.Json;
 
-namespace PortfolioWebsite.DAL.Context
+namespace MyPortfolioWebsite.DAL.Context
 {
     public class PortfolioContext : DbContext
     {
