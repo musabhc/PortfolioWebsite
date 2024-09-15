@@ -3,12 +3,12 @@ using MyPortfolioWebsite.DAL.Context;
 
 namespace MyPortfolioWebsite.ViewComponents
 {
-    public class _SkillComponentPartial : ViewComponent
+    public class _TestimonialComponentPartial : ViewComponent
     {
         PortfolioContext portfolioContext = new PortfolioContext();
         public IViewComponentResult Invoke()
         {
-            var values = portfolioContext.Skills.ToList();
+            var values = portfolioContext.Testimonials.ToList();
             return View(values);
         }
     }
