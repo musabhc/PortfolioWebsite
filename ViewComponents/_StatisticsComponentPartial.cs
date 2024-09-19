@@ -8,7 +8,8 @@ namespace MyPortfolioWebsite.ViewComponents
         PortfolioContext portfolioContext = new PortfolioContext();
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = portfolioContext.Statistics.ToList();
+            return View(values);
         }
     }
 }
