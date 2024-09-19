@@ -1,44 +1,22 @@
-﻿<!-- footer
-================================================== -->
+﻿@model List<MyPortfolioWebsite.DAL.Entities.SocialMedia>
 <footer>
     <div class="row">
         <div class="col-full">
 
             <div class="footer-logo">
-                <a class="footer-site-logo" href="#0"><img src="/hola-master/images/logo.png" alt="Homepage"></a>
+                <a class="footer-site-logo" href="#0"><img src="/images/logo.png" alt="Homepage"></a>
             </div>
 
             <ul class="footer-social">
-                <li>
-                    <a href="#0">
-                        <i class="im im-facebook" aria-hidden="true"></i>
-                        <span>Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#0">
-                        <i class="im im-twitter" aria-hidden="true"></i>
-                        <span>Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#0">
-                        <i class="im im-instagram" aria-hidden="true"></i>
-                        <span>Instagram</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#0">
-                        <i class="im im-behance" aria-hidden="true"></i>
-                        <span>Behance</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#0">
-                        <i class="im im-pinterest" aria-hidden="true"></i>
-                        <span>Pinterest</span>
-                    </a>
-                </li>
+                @foreach(var item in Model)
+                {
+                    <li>
+                        <a href="@item.url">
+                            <i class="@item.icon" aria-hidden="true"></i>
+                            <span>@item.title</span>
+                        </a>
+                    </li>
+                }
             </ul>
 
         </div>
@@ -49,7 +27,7 @@
         <div class="col-twelve">
             <div class="copyright">
                 <span>© Copyright Musa @DateTime.Now.Year</span>
-                <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span>
+                <span>Design by <a href="https://www.styleshout.com/">styleshout </a> and edited by Musa BUHURCU</span>
             </div>
 
             <div class="go-top">

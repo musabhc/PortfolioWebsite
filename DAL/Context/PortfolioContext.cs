@@ -25,14 +25,15 @@ namespace MyPortfolioWebsite.DAL.Context
             #endregion
         }
 
-        public DbSet<About> Abouts { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Experience> Experiences { get; set; }
-        public DbSet<Feature> Features { get; set; }
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<Portfolio> Portfolios { get; set; }
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<SocialMedia> SocialMedias { get; set; }
-        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<About> Abouts { get; set; } // C
+        public DbSet<Contact> Contacts { get; set; } // C
+        public DbSet<Experience> Experiences { get; set; } // C
+        public DbSet<Feature> Features { get; set; } // C
+        public DbSet<Message> Messages { get; set; } 
+        public DbSet<Portfolio> Portfolios { get; set; } // C
+        public DbSet<Skill> Skills { get; set; } // C
+        public DbSet<SocialMedia> SocialMedias { get; set; } // C
+        public DbSet<Statistics> Statistics { get; set; } // C
+        public DbSet<Testimonial> Testimonials { get; set; } // C
     }
 }
