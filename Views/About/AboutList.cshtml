@@ -24,7 +24,6 @@
 									<th scope="col">Title</th>
 									<th scope="col">Subdescription</th>
 									<th scope="col">Detail</th>
-									<th scope="col">Delete</th>
 									<th scope="col">Edit</th>
 								</tr>
 							</thead>
@@ -36,13 +35,11 @@
 										<td>@item.title</td>
 										<td>@item.subDescription</td>
 										<td>@item.detail</td>
-										<td><a href="/About/DeleteAbout/@item.aboutId" class="btn btn-danger">Delete</a></td>
 										<td><a href="/About/UpdateAbout/@item.aboutId" class="btn btn-success">Edit</a></td>
 									</tr>
 								}
 							</tbody>
 						</table>
-						<a href="/About/CreateAbout/" class="btn btn-info">Update About</a>
 					</div>
 				</div>
 			</div>
