@@ -1,41 +1,37 @@
-﻿@model List<About>
+﻿@model List<Feature>
 @{
-    ViewData["Title"] = "AboutList";
+    ViewData["Title"] = "FeatureList";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
+
 <div class="content">
 	<div class="container-fluid">
-		<h4 class="page-title">About</h4>
+		<h4 class="page-title">Feature</h4>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">About List</div>
+						<div class="card-title">Feature Info</div>
 					</div>
 					<div class="card-body">
-						<div class="card-sub">
-							You can edit the experiences from the table :
-						</div>
 						<table class="table mt-3">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
 									<th scope="col">Title</th>
-									<th scope="col">Subdescription</th>
-									<th scope="col">Detail</th>
+									<th scope="col">Description</th>
 									<th scope="col">Edit</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach(var item in Model)
+								@foreach (var item in Model)
 								{
 									<tr>
-										<td>@item.aboutId</td>
+										<td>@item.featureId</td>
 										<td>@item.title</td>
-										<td>@item.subDescription</td>
-										<td>@item.detail</td>
-										<td><a href="/About/UpdateAbout/@item.aboutId" class="btn btn-success">Edit</a></td>
+										<td>@item.description</td>
+										<td><a href="/Feature/UpdateFeature/@item.featureId" class="btn btn-success">Edit</a></td>
 									</tr>
 								}
 							</tbody>
@@ -46,3 +42,4 @@
 		</div>
 	</div>
 </div>
+

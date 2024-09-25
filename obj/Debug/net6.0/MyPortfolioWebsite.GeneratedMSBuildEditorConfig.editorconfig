@@ -48,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpZW5jZVxVcGRhdGVFeHBlcmllbmNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Feature/FeatureList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVhdHVyZVxGZWF0dXJlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Feature/UpdateFeature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVhdHVyZVxVcGRhdGVGZWF0dXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +66,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Layout/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGF5b3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Portfolio/CreatePortfolio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXENyZWF0ZVBvcnRmb2xpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Portfolio/PortfolioList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXFBvcnRmb2xpb0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Portfolio/UpdatePortfolio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXFVwZGF0ZVBvcnRmb2xpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Musa/Documents/Projeler/MyPortfolioWebsite/Views/Shared/Components/_AboutComponentPartial/Default.cshtml]

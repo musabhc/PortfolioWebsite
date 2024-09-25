@@ -34,9 +34,10 @@
                             </p>
                         </div>
 
-                        <a href="@item.url" class="item-folio__project-link" title="Project link">
+                        <a href="@item.url" class="item-folio__project-link" title="Project link" target="_blank" onclick="event.stopPropagation();">
                             <i class="im im-link"></i>
                         </a>
+
 
                         <div class="item-folio__caption">
                             <p>@item.description</p>
