@@ -1,0 +1,28 @@
+﻿@model Skill
+@{
+    ViewData["Title"] = "CreateSkill";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Skills</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">New Skill</div>
+					</div>
+					<div class="card-body">
+						<form method="post">
+							<label>Skill Name</label>
+							<input type="text" asp-for="title" class="form-control" />
+							<br />
+							<button class="btn btn-primary">Add Experience</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
