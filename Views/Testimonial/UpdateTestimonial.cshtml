@@ -1,0 +1,51 @@
+﻿@model Testimonial
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Update Testimonial</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Update Testimonial</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+
+                            <input type="hidden" asp-for="testimonialId" />
+
+                            <label>Name and Surname</label>
+                            <input type="text" asp-for="nameSurname" class="form-control" />
+                            <br />
+
+                            <label>Title</label>
+                            <input type="text" asp-for="title" class="form-control" />
+                            <br />
+
+                            <label>Current Image</label>
+                            <br />
+                            <img src="@Model.imageUrl" alt="Current Image" style="max-width: 200px; height: auto;" />
+                            <br />
+                            <br />
+
+                            <label>New Image (optional)</label>
+                            <input type="file" asp-for="imageUrl" class="form-control" />
+                            <br />
+
+                            <label>Description</label>
+                            <textarea rows="4" class="form-control" asp-for="description"></textarea>
+                            <br />
+
+                            <button type="submit" class="btn btn-primary">Update Testimonial</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
