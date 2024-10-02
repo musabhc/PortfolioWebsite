@@ -1,0 +1,35 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "CreateSocialMedia";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Social Media</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">New Social Media</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            <label>Name and Surname</label>
+                            <input type="text" asp-for="title" class="form-control" />
+                            <br />
+                            <label>Title</label>
+                            <input type="text" asp-for="url" class="form-control" />
+                            <br />
+                            <label>Image</label>
+                            <input type="file" asp-for="icon" class="form-control" />
+                            <br />
+                            <button type="submit" class="btn btn-primary">Add Social Media</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

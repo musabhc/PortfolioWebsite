@@ -9,13 +9,8 @@ namespace MyPortfolioWebsite.Controllers
     public class PortfolioController : Controller
     {
         PortfolioContext context = new PortfolioContext();
-        private readonly IWebHostEnvironment _hostingEnvironment;
-
-        // Constructor ile IWebHostEnvironment bağımlılığı ekleyelim.
-        public PortfolioController(IWebHostEnvironment hostingEnvironment)
-        {
-            _hostingEnvironment = hostingEnvironment;
-        }
+		private readonly PortfolioContext _context;
+		private readonly FileUploadService _fileUploadService;
 
         public IActionResult PortfolioList()
         {
@@ -32,31 +27,18 @@ namespace MyPortfolioWebsite.Controllers
         [HttpPost]
         public IActionResult CreatePortfolio(Portfolio portfolio, IFormFile imageUrl)
         {
-            if (imageUrl != null && imageUrl.Length > 0)
-            {
-                // Görselin yükleneceği dizin
-                var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/portfolioImages");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
+			if (imageUrl != null && imageUrl.Length > 0)
+			{
+				var imagePath = _fileUploadService.UploadFile(imageUrl, "portfolioImages");
+				if (imagePath != null)
+				{
+					// Görsel URL'sini güncelle
+					portfolio.imageUrl = imagePath;
+				}
+			}
 
-                // Dosya ismi ve tam yolu
-                var fileName = Path.GetFileName(imageUrl.FileName);
-                var filePath = Path.Combine(uploadsFolder, fileName);
-
-                // Dosyanın sunucuya yüklenmesi
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    imageUrl.CopyTo(fileStream);
-                }
-
-                // Görsel URL'sini veritabanına kaydetmek için
-                portfolio.imageUrl = $"/images/portfolioImages/{fileName}";
-            }
-
-            // Portfolio verisini veritabanına kaydetme işlemi
-            context.Portfolios.Add(portfolio);
+			// Portfolio verisini veritabanına kaydetme işlemi
+			context.Portfolios.Add(portfolio);
             context.SaveChanges();
             return RedirectToAction("PortfolioList");
         }
@@ -79,30 +61,17 @@ namespace MyPortfolioWebsite.Controllers
         [HttpPost]
         public IActionResult UpdatePortfolio(Portfolio portfolio, IFormFile imageUrl)
         {
-            if (imageUrl != null && imageUrl.Length > 0)
-            {
-                // Görselin yükleneceği dizin
-                var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images/portfolioImages");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
+			if (imageUrl != null && imageUrl.Length > 0)
+			{
+				var imagePath = _fileUploadService.UploadFile(imageUrl, "portfolioImages");
+				if (imagePath != null)
+				{
+					// Görsel URL'sini güncelle
+					portfolio.imageUrl = imagePath;
+				}
+			}
 
-                // Dosya ismi ve tam yolu
-                var fileName = Path.GetFileName(imageUrl.FileName);
-                var filePath = Path.Combine(uploadsFolder, fileName);
-
-                // Dosyanın sunucuya yüklenmesi
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    imageUrl.CopyTo(fileStream);
-                }
-
-                // Görsel URL'sini güncelleme
-                portfolio.imageUrl = $"/images/portfolioImages/{fileName}";
-            }
-
-            context.Portfolios.Update(portfolio);
+			context.Portfolios.Update(portfolio);
             context.SaveChanges();
             return RedirectToAction("PortfolioList");
         }

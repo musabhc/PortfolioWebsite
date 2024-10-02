@@ -1,0 +1,54 @@
+﻿@model List<Testimonial>
+@{
+    ViewData["Title"] = "TestimonialList";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Testimonials</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Testimonial List</div>
+					</div>
+					<div class="card-body">
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Name and Surname</th>
+									<th scope="col">Title</th>
+									<th scope="col">Description</th>
+									<th scope="col">Image</th>
+									<th scope="col">Delete</th>
+									<th scope="col">Edit</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.testimonialId</td>
+										<td>@item.nameSurname</td>
+										<td>@item.title</td>
+										<td>@item.description</td>
+										<td>
+											<img src="@item.imageUrl" style="width: 100px; height: auto;">
+										</td>
+										<td><a href="/Testimonial/DeleteTestimonial/@item.testimonialId" class="btn btn-danger">Delete</a></td>
+										<td><a href="/Testimonial/UpdateTestimonial/@item.testimonialId" class="btn btn-success">Edit</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<a href="/Testimonial/CreateTestimonial/" class="btn btn-info">Add Testimonial</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
