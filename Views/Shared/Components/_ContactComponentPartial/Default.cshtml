@@ -1,4 +1,4 @@
-﻿@model List<MyPortfolioWebsite.DAL.Entities.Contact>
+﻿@model List<Contact>
 <section id="contact" class="s-contact target-section">
 
     <div class="overlay"></div>
@@ -14,49 +14,8 @@
     }
 
     <div class="row contact__main">
-        <div class="col-eight tab-full contact__form">
-            <form name="contactForm" id="contactForm" method="post" action="/Contact/SendEmail">
-                <fieldset>
-                    <div class="form-field">
-                        <input name="contactName" type="text" id="contactName" placeholder="Name" value="@ViewData["ContactName"]" minlength="2" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="@ViewData["ContactEmail"]" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="@ViewData["ContactSubject"]" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <textarea name="contactMessage" id="contactMessage" placeholder="Message" rows="10" cols="50" required="" aria-required="true" class="full-width">@ViewData["ContactMessage"]</textarea>
-                    </div>
-                    <div class="form-field">
-                        <button class="full-width btn--primary">Submit</button>
-                        <div class="submit-loader">
-                            <div class="text-loader">Sending...</div>
-                            <div class="s-loader">
-                                <div class="bounce1"></div>
-                                <div class="bounce2"></div>
-                                <div class="bounce3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
 
-            @if (ViewData["SuccessMessage"] != null)
-            {
-                <div class="message-success">
-                    @ViewData["SuccessMessage"]
-                </div>
-            }
-
-            @if (ViewData["ErrorMessage"] != null)
-            {
-                <div class="message-warning">
-                    @ViewData["ErrorMessage"]
-                </div>
-            }
-        </div>
+        @await Component.InvokeAsync("_MessageComponentPartial")
 
         @foreach (var item in Model)
         {

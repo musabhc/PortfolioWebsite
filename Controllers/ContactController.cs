@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MyPortfolioWebsite.DAL.Context;
@@ -40,42 +41,37 @@ public class ContactController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> SendEmail(string contactName, string contactEmail, string contactSubject, string contactMessage)
+    public IActionResult SendEmail(string contactName, string contactEmail, string contactSubject, string contactMessage)
     {
+        if (string.IsNullOrEmpty(contactName) || string.IsNullOrEmpty(contactEmail) || string.IsNullOrEmpty(contactMessage))
+        {
+            return Json(new { status = "error", message = "Lütfen tüm zorunlu alanları doldurun." });
+        }
+        // Message nesnesi oluşturma
+        var message = new Message
+        {
+            nameSurname = contactName,
+            email = contactEmail,
+            subject = contactSubject,
+            messageDetail = contactMessage,
+            sendDate = DateTime.Now,
+            isRead = false // Varsayılan olarak okunmadı
+        };
+
         try
         {
-            var smtpClient = new SmtpClient(_configuration["Smtp:Host"])
-            {
-                Port = int.Parse(_configuration["Smtp:Port"]),
-                Credentials = new NetworkCredential(_configuration["Smtp:Username"], _configuration["Smtp:Password"]),
-                EnableSsl = true,
-            };
-
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress("no-reply@yourdomain.com"),
-                Subject = contactSubject,
-                Body = $"Name: {contactName}\n\nMessage: {contactMessage}",
-                IsBodyHtml = false,
-            };
-            mailMessage.To.Add("info@musabuhurcu.com.tr");
-
-            await smtpClient.SendMailAsync(mailMessage);
-
-            ViewData["SuccessMessage"] = "Your message was sent, thank you!";
+            context.Messages.Add(message);
+            context.SaveChanges();
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Error sending email: {ex.Message}");
-            ViewData["ErrorMessage"] = "Something went wrong. Please try again.";
-            // Pass form data back to the view
-            ViewData["ContactName"] = contactName;
-            ViewData["ContactEmail"] = contactEmail;
-            ViewData["ContactSubject"] = contactSubject;
-            ViewData["ContactMessage"] = contactMessage;
+            return Json(new { status = "error", message = "Mesaj kaydedilirken bir hata oluştu: " + ex.Message });
         }
+        
 
-        return View("Contact");
+        return Json(new { status = "OK" });
     }
+
+
 
 }

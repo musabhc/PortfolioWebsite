@@ -1,0 +1,35 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "ReadMessage";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Inbox</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Message Detail</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							Sender: <b>@Model.nameSurname</b>
+							<br />
+							E-mail: <b>@Model.email</b>
+							<br />
+							Date: <b>@Model.sendDate</b>
+							<br /> <br />
+							Message: <b>@Model.messageDetail</b>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -336,56 +336,50 @@
 
     /* Contact Form
      * ------------------------------------------------------ */
-    var ssContactForm = function() {
-
-        /* local validation */
-	    $('#contactForm').validate({
-        
-            /* submit via ajax */
-            submitHandler: function(form) {
-    
+    $(document).ready(function () {
+        $('#contactForm').validate({
+            submitHandler: function (form) {
                 var sLoader = $('.submit-loader');
-    
+
                 $.ajax({
-    
                     type: "POST",
-                    url: "inc/sendEmail.php",
+                    url: "/Contact/SendEmail", // Sunucuya gönderilecek URL
                     data: $(form).serialize(),
-                    beforeSend: function() { 
-    
-                        sLoader.slideDown("slow");
-    
+                    beforeSend: function () {
+                        sLoader.slideDown("slow"); // Gönderim baþlarken animasyon göster
                     },
-                    success: function(msg) {
-    
-                        // Message was sent
-                        if (msg == 'OK') {
-                            sLoader.slideUp("slow"); 
+                    success: function (response) {
+                        // Mesaj baþarýlý bir þekilde gönderildi
+                        if (response.status == 'OK') {
+                            sLoader.slideUp("slow");
                             $('.message-warning').fadeOut();
                             $('#contactForm').fadeOut();
                             $('.message-success').fadeIn();
-                        }
-                        // There was an error
-                        else {
-                            sLoader.slideUp("slow"); 
-                            $('.message-warning').html(msg);
+                        } else {
+                            // Hata mesajý göster
+                            sLoader.slideUp("slow");
+                            $('.message-warning').html(response.message);
                             $('.message-warning').slideDown("slow");
                         }
-    
                     },
-                    error: function() {
-    
-                        sLoader.slideUp("slow"); 
-                        $('.message-warning').html("Something went wrong. Please try again.");
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        sLoader.slideUp("slow");
+
+                        // Konsola hata detaylarýný yazdýr
+                        console.log("AJAX Error:");
+                        console.log("Status: " + textStatus);         // AJAX isteðinin durumu
+                        console.log("Error Thrown: " + errorThrown);  // Hata tipi
+                        console.log("Response Text: " + jqXHR.responseText); // Sunucudan dönen yanýt
+
+                        // Kullanýcýya hata mesajý göster
+                        $('.message-warning').html("An error occurred: " + jqXHR.responseText);
                         $('.message-warning').slideDown("slow");
-    
                     }
-    
                 });
             }
-    
         });
-    };
+    });
+
 
 
    /* Back to Top
