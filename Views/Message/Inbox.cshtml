@@ -1,0 +1,57 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Messages</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Inbox</div>
+					</div>
+					<div class="card-body">
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Sender</th>
+									<th scope="col">Subject</th>
+									<th scope="col">Date</th>
+									<th scope="col">Read</th>
+									<th scope="col">Status</th>
+									<th scope="col">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.messageId</td>
+										<td>@item.nameSurname</td>
+										<td>@item.subject</td>
+										<td>@item.sendDate.ToShortDateString()</td>
+										<td><a href="/Message/ReadMessage/@item.messageId" class="btn btn-warning">Read</a></td>
+										@if(item.isRead == true)
+										{
+											<td><a href="/Message/ChangeIsRead/@item.messageId" class="btn btn-dark">Mark as Unread</a></td>
+										}
+										else
+										{
+											<td><a href="/Message/ChangeIsRead/@item.messageId" class="btn btn-info">Mark as Read</a></td>
+										}
+										<td><a href="/Message/DeleteMessage/@item.messageId" class="btn btn-danger">Delete</a></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
