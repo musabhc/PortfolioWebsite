@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MyPortfolioWebsite.DAL.Context;
+
 using MyPortfolioWebsite.DAL.Entities;
 using System.Net;
 using System.Net.Mail;
@@ -12,24 +12,28 @@ public class ContactController : Controller
 {
     private readonly IConfiguration _configuration;
     private readonly ILogger<ContactController> _logger;
-	PortfolioContext context = new PortfolioContext();
-	public IActionResult ContactList()
+    private readonly PortfolioContext _portfolioContext;
+    public ContactController(PortfolioContext portfolioContext)
+    {
+        _portfolioContext = portfolioContext;
+    }
+    public IActionResult ContactList()
 	{
-		var values = context.Contacts.ToList();
+		var values = _portfolioContext.Contacts.ToList();
 		return View(values);
 	}
 
 	[HttpGet]
 	public IActionResult UpdateContact(int id)
 	{
-		var value = context.Contacts.Find(id);
+		var value = _portfolioContext.Contacts.Find(id);
 		return View(value);
 	}
 	[HttpPost]
 	public IActionResult UpdateContact(Contact contact)
 	{
-		context.Contacts.Update(contact);
-		context.SaveChanges();
+		_portfolioContext.Contacts.Update(contact);
+		_portfolioContext.SaveChanges();
 		return RedirectToAction("ContactList");
 	}
 
@@ -60,8 +64,8 @@ public class ContactController : Controller
 
         try
         {
-            context.Messages.Add(message);
-            context.SaveChanges();
+            _portfolioContext.Messages.Add(message);
+            _portfolioContext.SaveChanges();
         }
         catch (Exception ex)
         {

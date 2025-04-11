@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
     public class SocialMediaController : Controller
     {
-        PortfolioContext context = new PortfolioContext();
+
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-		public IActionResult SocialMediaList()
+        public SocialMediaController(PortfolioContext portfolioContext)
         {
-            var values = context.SocialMedias.ToList();
+            _context = portfolioContext;
+        }
+        public IActionResult SocialMediaList()
+        {
+            var values = _context.SocialMedias.ToList();
             return View(values);
         }
         [HttpGet]
@@ -29,21 +32,21 @@ namespace MyPortfolioWebsite.Controllers
 			socialmedia.icon = imagePath;
 		}
 			
-			context.SocialMedias.Add(socialmedia);
-            context.SaveChanges();
+			_context.SocialMedias.Add(socialmedia);
+            _context.SaveChanges();
             return RedirectToAction("SocialMediaList");
         }
         public IActionResult DeleteSocialMedia(int id)
         {
-            var value = context.SocialMedias.Find(id);
-            context.SocialMedias.Remove(value);
-            context.SaveChanges();
+            var value = _context.SocialMedias.Find(id);
+            _context.SocialMedias.Remove(value);
+            _context.SaveChanges();
             return RedirectToAction("SocialMediaList");
         }
         [HttpGet]
         public IActionResult UpdateSocialMedia(int id)
         {
-            var value = context.SocialMedias.Find(id);
+            var value = _context.SocialMedias.Find(id);
             return View(value);
         }
         [HttpPost]
@@ -58,8 +61,8 @@ namespace MyPortfolioWebsite.Controllers
 					socialmedia.icon = imagePath;
 				}
 			}
-			context.SocialMedias.Update(socialmedia);
-            context.SaveChanges();
+			_context.SocialMedias.Update(socialmedia);
+            _context.SaveChanges();
             return RedirectToAction("SocialMediaList");
         }
     }

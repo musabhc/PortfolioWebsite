@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
+
 
 namespace MyPortfolioWebsite.Controllers
 {
 	public class MessageController : Controller
 	{
-		PortfolioContext context = new PortfolioContext();
-		public IActionResult Inbox()
+        private readonly PortfolioContext _portfolioContext;
+        public MessageController(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
+        public IActionResult Inbox()
 		{
-			var values = context.Messages.ToList();
+			var values = _portfolioContext.Messages.ToList();
 			return View(values);
 		}
 		public IActionResult ChangeIsRead(int id)
 		{
-			var value = context.Messages.Find(id).isRead;
+			var value = _portfolioContext.Messages.Find(id).isRead;
 			if (value)
 			{
 				value = false;
@@ -22,20 +26,20 @@ namespace MyPortfolioWebsite.Controllers
 			{
 				value = true;
 			}
-			context.SaveChanges();
+			_portfolioContext.SaveChanges();
 			return RedirectToAction("Inbox");
 		}
 		
 		public IActionResult DeleteMessage(int id)
 		{
-			var value = context.Messages.Find(id);
-			context.Messages.Remove(value);
-			context.SaveChanges();
+			var value = _portfolioContext.Messages.Find(id);
+			_portfolioContext.Messages.Remove(value);
+			_portfolioContext.SaveChanges();
 			return RedirectToAction("Inbox");
 		}
 		public IActionResult ReadMessage(int id)
 		{
-			var value = context.Messages.Find(id);
+			var value = _portfolioContext.Messages.Find(id);
 			return View(value);
 		}
 

@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
 	public class SkillController : Controller
 	{
-		PortfolioContext context = new PortfolioContext();
-		public IActionResult SkillList()
+		private readonly PortfolioContext _portfolioContext;
+        public SkillController(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
+        public IActionResult SkillList()
 		{
-			var values = context.Skills.ToList();
+			var values = _portfolioContext.Skills.ToList();
 			return View(values);
 		}
 		[HttpGet]
@@ -20,28 +23,28 @@ namespace MyPortfolioWebsite.Controllers
 		[HttpPost]
 		public IActionResult CreateSkill(Skill skill)
 		{
-			context.Skills.Add(skill);
-			context.SaveChanges();
+            _portfolioContext.Skills.Add(skill);
+            _portfolioContext.SaveChanges();
 			return RedirectToAction("SkillList");
 		}
 		public IActionResult DeleteSkill(int id)
 		{
-			var value = context.Skills.Find(id);
-			context.Skills.Remove(value);
-			context.SaveChanges();
+			var value = _portfolioContext.Skills.Find(id);
+            _portfolioContext.Skills.Remove(value);
+            _portfolioContext.SaveChanges();
 			return RedirectToAction("SkillList");
 		}
 		[HttpGet]
 		public IActionResult UpdateSkill(int id)
 		{
-			var value = context.Skills.Find(id);
+			var value = _portfolioContext.Skills.Find(id);
 			return View(value);
 		}
 		[HttpPost]
 		public IActionResult UpdateSkill(Skill skill)
 		{
-			context.Skills.Update(skill);
-			context.SaveChanges();
+			_portfolioContext.Skills.Update(skill);
+			_portfolioContext.SaveChanges();
 			return RedirectToAction("SkillList");
 		}
 	}
