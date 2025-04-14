@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 
 namespace MyPortfolioWebsite.ViewComponents
 {
     public class _ContactComponentPartial : ViewComponent
     {
-        PortfolioContext portfolioContext = new PortfolioContext();
+        private readonly PortfolioContext _portfolioContext;
+        public _ContactComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IViewComponentResult Invoke()
         {
-            var values = portfolioContext.Contacts.ToList();
+            var values = _portfolioContext.Contacts.ToList();
             return View(values);
         }
     }

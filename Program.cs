@@ -1,4 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// DbContext ekleme
+builder.Services.AddDbContext<PortfolioContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DbConnection"),
+    new MySqlServerVersion(new Version(10, 5, 8))));
+
+// `IConfiguration` servisini ekleyelim
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

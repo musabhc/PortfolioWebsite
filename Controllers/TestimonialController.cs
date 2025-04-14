@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
 	public class TestimonialController : Controller
 	{
-		PortfolioContext context = new PortfolioContext();
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-
-		public IActionResult TestimonialList()
+        public TestimonialController(PortfolioContext portfolioContext, FileUploadService fileUploadService)
+        {
+            _context = portfolioContext;
+			_fileUploadService = fileUploadService;
+        }
+        public IActionResult TestimonialList()
 		{
-			var values = context.Testimonials.ToList();
+			var values = _context.Testimonials.ToList();
 			return View(values);
 		}
 		[HttpGet]
@@ -35,15 +37,15 @@ namespace MyPortfolioWebsite.Controllers
 		}
 		public IActionResult DeleteTestimonial(int id)
 		{
-			var value = context.Testimonials.Find(id);
-			context.Testimonials.Remove(value);
-			context.SaveChanges();
+			var value = _context.Testimonials.Find(id);
+			_context.Testimonials.Remove(value);
+			_context.SaveChanges();
 			return RedirectToAction("TestimonialList");
 		}
 		[HttpGet]
 		public IActionResult UpdateTestimonial(int id)
 		{
-			var value = context.Experiences.Find(id);
+			var value = _context.Experiences.Find(id);
 			return View(value);
 		}
 		[HttpPost]
@@ -58,8 +60,8 @@ namespace MyPortfolioWebsite.Controllers
 					testimonial.imageUrl = imagePath;
 				}
 			}
-			context.Testimonials.Update(testimonial);
-			context.SaveChanges();
+			_context.Testimonials.Update(testimonial);
+			_context.SaveChanges();
 			return RedirectToAction("TestimonialList");
 		}
 	}

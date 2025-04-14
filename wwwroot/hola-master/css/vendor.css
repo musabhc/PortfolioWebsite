@@ -40,14 +40,14 @@
     padding: 0;
 }
 
-.slick-list:focus {
-    outline: none;
-}
+    .slick-list:focus {
+        outline: none;
+    }
 
-.slick-list.dragging {
-    cursor: pointer;
-    cursor: hand;
-}
+    .slick-list.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
 
 .slick-slider .slick-track, .slick-slider .slick-list {
     -webkit-transform: translate3d(0, 0, 0);
@@ -64,14 +64,14 @@
     display: block;
 }
 
-.slick-track:before, .slick-track:after {
-    content: "";
-    display: table;
-}
+    .slick-track:before, .slick-track:after {
+        content: "";
+        display: table;
+    }
 
-.slick-track:after {
-    clear: both;
-}
+    .slick-track:after {
+        clear: both;
+    }
 
 .slick-loading .slick-track {
     visibility: hidden;
@@ -146,14 +146,14 @@
     outline: none;
 }
 
-.pswp * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
+    .pswp * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-.pswp img {
-    max-width: none;
-}
+    .pswp img {
+        max-width: none;
+    }
 
 
 /* style is added when JS option showHideOpacity is set to true */
@@ -332,10 +332,10 @@
     color: #CCC;
 }
 
-.pswp__error-msg a {
-    color: #CCC;
-    text-decoration: underline;
-}
+    .pswp__error-msg a {
+        color: #CCC;
+        text-decoration: underline;
+    }
 
 
 /* ===================================================================
@@ -384,20 +384,20 @@
     box-shadow: none;
 }
 
-.pswp__button:focus, .pswp__button:hover {
-    opacity: 1;
-    background-color: transparent;
-}
+    .pswp__button:focus, .pswp__button:hover {
+        opacity: 1;
+        background-color: transparent;
+    }
 
-.pswp__button:active {
-    outline: none;
-    opacity: 0.9;
-}
+    .pswp__button:active {
+        outline: none;
+        opacity: 0.9;
+    }
 
-.pswp__button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-}
+    .pswp__button::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
 
 
 /* 
@@ -421,6 +421,7 @@ over element that should close gallery
     .pswp--svg .pswp__button, .pswp--svg .pswp__button--arrow--left:before, .pswp--svg .pswp__button--arrow--right:before {
         background-image: url(images/photoswipe/default-skin.svg);
     }
+
     .pswp--svg .pswp__button--arrow--left, .pswp--svg .pswp__button--arrow--right {
         background: none;
     }
@@ -489,15 +490,15 @@ Arrow buttons hit area
     right: 12px;
 }
 
-.pswp__button--arrow--left:before, .pswp__button--arrow--right:before {
-    content: '';
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    height: 30px;
-    width: 32px;
-    position: absolute;
-    border-radius: 3px;
-}
+    .pswp__button--arrow--left:before, .pswp__button--arrow--right:before {
+        content: '';
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        height: 30px;
+        width: 32px;
+        position: absolute;
+        border-radius: 3px;
+    }
 
 .pswp__button--arrow--left:before {
     left: 6px;
@@ -562,38 +563,38 @@ Arrow buttons hit area
     will-change: transform;
 }
 
-.pswp__share-tooltip a {
-    display: block;
-    padding: 9px 15px;
-    color: #000;
-    text-decoration: none;
-    font-size: 13px;
-    line-height: 18px;
-}
+    .pswp__share-tooltip a {
+        display: block;
+        padding: 9px 15px;
+        color: #000;
+        text-decoration: none;
+        font-size: 13px;
+        line-height: 18px;
+    }
 
-.pswp__share-tooltip a:hover {
-    text-decoration: none;
-    color: #000;
-}
+        .pswp__share-tooltip a:hover {
+            text-decoration: none;
+            color: #000;
+        }
 
-.pswp__share-tooltip a:first-child {
-    /* round corners on the first/last list item */
-    border-radius: 3px 3px 0 0;
-}
+        .pswp__share-tooltip a:first-child {
+            /* round corners on the first/last list item */
+            border-radius: 3px 3px 0 0;
+        }
 
-.pswp__share-tooltip a:last-child {
-    border-radius: 0 0 3px 3px;
-}
+        .pswp__share-tooltip a:last-child {
+            border-radius: 0 0 3px 3px;
+        }
 
 .pswp__share-modal--fade-in {
     opacity: 1;
 }
 
-.pswp__share-modal--fade-in .pswp__share-tooltip {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-}
+    .pswp__share-modal--fade-in .pswp__share-tooltip {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
 
 
 /* increase size of share links on touch devices */
@@ -622,9 +623,9 @@ a.pswp__share--facebook:hover {
     color: #FFF;
 }
 
-a.pswp__share--facebook:hover:before {
-    border-bottom-color: #3E5C9A;
-}
+    a.pswp__share--facebook:hover:before {
+        border-bottom-color: #3E5C9A;
+    }
 
 a.pswp__share--twitter:hover {
     background: #55ACEE;
@@ -670,17 +671,17 @@ a.pswp__share--download:hover {
     min-height: 45px;
 }
 
-.pswp__caption h4 {
-    font-size: 1.8rem;
-    line-height: 1.333;
-    margin: 0 0 .6rem;
-    color: #FFFFFF;
-}
+    .pswp__caption h4 {
+        font-size: 1.8rem;
+        line-height: 1.333;
+        margin: 0 0 .6rem;
+        color: #FFFFFF;
+    }
 
-.pswp__caption small {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
-}
+    .pswp__caption small {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+    }
 
 .pswp__caption__center {
     text-align: center;
@@ -733,24 +734,24 @@ a.pswp__share--download:hover {
     opacity: 1;
 }
 
-.pswp__preloader--active .pswp__preloader__icn {
-    /* We use .gif in browsers that don't support CSS animation */
-    background: url(..images/photoswipe/preloader.gif) 0 0 no-repeat;
-}
+    .pswp__preloader--active .pswp__preloader__icn {
+        /* We use .gif in browsers that don't support CSS animation */
+        background: url(..images/photoswipe/preloader.gif) 0 0 no-repeat;
+    }
 
 .pswp--css_animation .pswp__preloader--active {
     opacity: 1;
 }
 
-.pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
-    -webkit-animation: clockwise 500ms linear infinite;
-    animation: clockwise 500ms linear infinite;
-}
+    .pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
+        -webkit-animation: clockwise 500ms linear infinite;
+        animation: clockwise 500ms linear infinite;
+    }
 
-.pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
-    -webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
-    animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
-}
+    .pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
+        -webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+        animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+    }
 
 .pswp--css_animation .pswp__preloader__icn {
     background: none;
@@ -805,6 +806,7 @@ a.pswp__share--download:hover {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -816,6 +818,7 @@ a.pswp__share--download:hover {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -827,10 +830,12 @@ a.pswp__share--download:hover {
         -webkit-transform: rotate(0);
         transform: rotate(0);
     }
+
     50% {
         -webkit-transform: rotate(-140deg);
         transform: rotate(-140deg);
     }
+
     100% {
         -webkit-transform: rotate(0);
         transform: rotate(0);
@@ -842,10 +847,12 @@ a.pswp__share--download:hover {
         -webkit-transform: rotate(0);
         transform: rotate(0);
     }
+
     50% {
         -webkit-transform: rotate(-140deg);
         transform: rotate(-140deg);
     }
+
     100% {
         -webkit-transform: rotate(0);
         transform: rotate(0);
@@ -968,42 +975,55 @@ a.pswp__share--download:hover {
     .str {
         color: #dd1144;
     }
+
     .kwd {
         color: #333333;
     }
+
     .com {
         color: #999988;
     }
+
     .typ {
         color: #445588;
     }
+
     .lit {
         color: #445588;
     }
+
     .pun {
         color: #333333;
     }
+
     .opn {
         color: #333333;
     }
+
     .clo {
         color: #333333;
     }
+
     .tag {
         color: navy;
     }
+
     .atn {
         color: teal;
     }
+
     .atv {
         color: #dd1144;
     }
+
     .dec {
         color: #333333;
     }
+
     .var {
         color: teal;
     }
+
     .fun {
         color: #990000;
     }
@@ -1013,31 +1033,39 @@ a.pswp__share--download:hover {
     .str {
         color: #006600;
     }
+
     .kwd {
         color: #006;
         font-weight: bold;
     }
+
     .com {
         color: #600;
         font-style: italic;
     }
+
     .typ {
         color: #404;
         font-weight: bold;
     }
+
     .lit {
         color: #004444;
     }
+
     .pun, .opn, .clo {
         color: #444400;
     }
+
     .tag {
         color: #006;
         font-weight: bold;
     }
+
     .atn {
         color: #440044;
     }
+
     .atv {
         color: #006600;
     }

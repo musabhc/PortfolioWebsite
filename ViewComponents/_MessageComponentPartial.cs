@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 
 namespace MyPortfolioWebsite.ViewComponents
 {
     public class _MessageComponentPartial : ViewComponent
     {
-        PortfolioContext portfolioContext = new PortfolioContext();
+        private readonly PortfolioContext _portfolioContext;
+        public _MessageComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IViewComponentResult Invoke()
         {
             return View();

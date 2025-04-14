@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 
 namespace MyPortfolioWebsite.ViewComponents
 {
     public class _AboutComponentPartial : ViewComponent
     {
-        PortfolioContext portfolioContext = new PortfolioContext();
+        private readonly PortfolioContext _portfolioContext;
+        public _AboutComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IViewComponentResult Invoke()
         {
-            ViewBag.aboutTitle = portfolioContext.Abouts.Select(x => x.title).FirstOrDefault();
-            ViewBag.aboutSubdescription = portfolioContext.Abouts.Select(x => x.subDescription).FirstOrDefault();
-            ViewBag.aboutDetail = portfolioContext.Abouts.Select(x => x.detail).FirstOrDefault();
+            ViewBag.aboutTitle = _portfolioContext.Abouts.Select(x => x.title).FirstOrDefault();
+            ViewBag.aboutSubdescription = _portfolioContext.Abouts.Select(x => x.subDescription).FirstOrDefault();
+            ViewBag.aboutDetail = _portfolioContext.Abouts.Select(x => x.detail).FirstOrDefault();
             return View();
         }
     }

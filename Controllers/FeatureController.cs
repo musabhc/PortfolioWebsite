@@ -1,28 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
 	public class FeatureController : Controller
 	{
-		PortfolioContext context = new PortfolioContext();
-		public IActionResult FeatureList()
+        private readonly PortfolioContext _portfolioContext;
+        public FeatureController(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
+        public IActionResult FeatureList()
 		{
-			var values = context.Features.ToList();
+			var values = _portfolioContext.Features.ToList();
 			return View(values);
 		}
 		[HttpGet]
 		public IActionResult UpdateFeature(int id)
 		{
-			var value = context.Experiences.Find(id);
+			var value = _portfolioContext.Experiences.Find(id);
 			return View(value);
 		}
 		[HttpPost]
 		public IActionResult UpdateFeature(Feature feature)
 		{
-			context.Features.Update(feature);
-			context.SaveChanges();
+			_portfolioContext.Features.Update(feature);
+			_portfolioContext.SaveChanges();
 			return RedirectToAction("FeatureList");
 		}
 	}

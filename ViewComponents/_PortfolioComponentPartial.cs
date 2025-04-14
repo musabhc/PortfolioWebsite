@@ -1,15 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MyPortfolioWebsite.ViewComponents
 {
     public class _PortfolioComponentPartial : ViewComponent
     {
-        PortfolioContext portfolioContext = new PortfolioContext();
+        private readonly PortfolioContext _portfolioContext;
+
+        public _PortfolioComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
+
         public IViewComponentResult Invoke()
         {
-            var values = portfolioContext.Portfolios.ToList();
+            var values = _portfolioContext.Portfolios.ToList();
             return View(values);
         }
     }
 }
+

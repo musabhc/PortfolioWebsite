@@ -1,28 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
+
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
     public class AboutController : Controller
     {
-        PortfolioContext context = new PortfolioContext();
+        private readonly PortfolioContext _portfolioContext;
+        public AboutController(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IActionResult AboutList()
         {
-            var values = context.Abouts.ToList();
+            var values = _portfolioContext.Abouts.ToList();
             return View(values);
         }
 		[HttpGet]
 		public IActionResult UpdateAbout(int id)
 		{
-			var value = context.Abouts.Find(id);
+			var value = _portfolioContext.Abouts.Find(id);
 			return View(value);
 		}
 		[HttpPost]
 		public IActionResult UpdateAbout(About about)
 		{
-			context.Abouts.Update(about);
-			context.SaveChanges();
+			_portfolioContext.Abouts.Update(about);
+			_portfolioContext.SaveChanges();
 			return RedirectToAction("AboutList");
 		}
 

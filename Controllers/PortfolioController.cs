@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPortfolioWebsite.DAL.Context;
+
 using MyPortfolioWebsite.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using System.IO;
@@ -8,13 +8,17 @@ namespace MyPortfolioWebsite.Controllers
 {
     public class PortfolioController : Controller
     {
-        PortfolioContext context = new PortfolioContext();
+        
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-
+        public PortfolioController(PortfolioContext portfolioContext, FileUploadService fileUploadService)
+        {
+            _context = portfolioContext;
+            _fileUploadService = fileUploadService;
+        }
         public IActionResult PortfolioList()
         {
-            var values = context.Portfolios.ToList();
+            var values = _context.Portfolios.ToList();
             return View(values);
         }
 
@@ -38,23 +42,23 @@ namespace MyPortfolioWebsite.Controllers
 			}
 
 			// Portfolio verisini veritabanına kaydetme işlemi
-			context.Portfolios.Add(portfolio);
-            context.SaveChanges();
+			_context.Portfolios.Add(portfolio);
+            _context.SaveChanges();
             return RedirectToAction("PortfolioList");
         }
 
         public IActionResult DeletePortfolio(int id)
         {
-            var value = context.Portfolios.Find(id);
-            context.Portfolios.Remove(value);
-            context.SaveChanges();
+            var value = _context.Portfolios.Find(id);
+            _context.Portfolios.Remove(value);
+            _context.SaveChanges();
             return RedirectToAction("PortfolioList");
         }
 
         [HttpGet]
         public IActionResult UpdatePortfolio(int id)
         {
-            var value = context.Portfolios.Find(id);
+            var value = _context.Portfolios.Find(id);
             return View(value);
         }
 
@@ -71,8 +75,8 @@ namespace MyPortfolioWebsite.Controllers
 				}
 			}
 
-			context.Portfolios.Update(portfolio);
-            context.SaveChanges();
+			_context.Portfolios.Update(portfolio);
+            _context.SaveChanges();
             return RedirectToAction("PortfolioList");
         }
     }
