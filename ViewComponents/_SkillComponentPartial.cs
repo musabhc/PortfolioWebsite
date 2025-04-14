@@ -6,6 +6,10 @@ namespace MyPortfolioWebsite.ViewComponents
     public class _SkillComponentPartial : ViewComponent
     {
         private readonly PortfolioContext _portfolioContext;
+        public _SkillComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IViewComponentResult Invoke()
         {
             var values = _portfolioContext.Skills.ToList();

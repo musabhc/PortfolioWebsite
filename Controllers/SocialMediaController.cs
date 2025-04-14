@@ -8,9 +8,10 @@ namespace MyPortfolioWebsite.Controllers
 
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-        public SocialMediaController(PortfolioContext portfolioContext)
+        public SocialMediaController(PortfolioContext portfolioContext, FileUploadService fileUploadService)
         {
             _context = portfolioContext;
+            _fileUploadService = fileUploadService;
         }
         public IActionResult SocialMediaList()
         {
@@ -23,16 +24,25 @@ namespace MyPortfolioWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateSocialMedia(SocialMedia socialmedia, IFormFile imageUrl)
+        public IActionResult CreateSocialMedia(SocialMedia socialmedia, IFormFile icon)
         {
-		var imagePath = _fileUploadService.UploadFile(imageUrl, "socialMediaImages");
-		if (imagePath != null)
-		{
-			// Görsel URL'sini güncelle
-			socialmedia.icon = imagePath;
-		}
-			
-			_context.SocialMedias.Add(socialmedia);
+            if (icon != null && icon.Length > 0)
+            {
+                var imagePath = _fileUploadService.UploadFile(icon, "socialMediaImages");
+                if (imagePath != null)
+                {
+                    // Görsel URL'sini güncelle
+                    socialmedia.icon = imagePath;
+                }
+            }
+            else
+            {
+                // Görsel yüklenmediğinde varsayılan bir ikon URL'si kullanabilirsiniz
+                socialmedia.icon = "/images/defaultIcon.ico"; // Varsayılan ikon yolu
+            }
+
+            // Portfolio verisini veritabanına kaydetme işlemi
+            _context.SocialMedias.Add(socialmedia);
             _context.SaveChanges();
             return RedirectToAction("SocialMediaList");
         }
@@ -50,18 +60,19 @@ namespace MyPortfolioWebsite.Controllers
             return View(value);
         }
         [HttpPost]
-        public IActionResult UpdateSocialMedia(SocialMedia socialmedia, IFormFile imageUrl)
+        public IActionResult UpdateSocialMedia(SocialMedia socialmedia, IFormFile icon)
         {
-			if (imageUrl != null && imageUrl.Length > 0)
+			if (icon != null && icon.Length > 0)
 			{
-				var imagePath = _fileUploadService.UploadFile(imageUrl, "socialMediaImages");
+				var imagePath = _fileUploadService.UploadFile(icon, "socialMediaImages");
 				if (imagePath != null)
 				{
 					// Görsel URL'sini güncelle
 					socialmedia.icon = imagePath;
 				}
-			}
-			_context.SocialMedias.Update(socialmedia);
+            }
+
+            _context.SocialMedias.Update(socialmedia);
             _context.SaveChanges();
             return RedirectToAction("SocialMediaList");
         }

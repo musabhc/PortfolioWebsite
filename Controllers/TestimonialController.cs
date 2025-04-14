@@ -7,9 +7,10 @@ namespace MyPortfolioWebsite.Controllers
 	{
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-        public TestimonialController(PortfolioContext portfolioContext)
+        public TestimonialController(PortfolioContext portfolioContext, FileUploadService fileUploadService)
         {
             _context = portfolioContext;
+			_fileUploadService = fileUploadService;
         }
         public IActionResult TestimonialList()
 		{

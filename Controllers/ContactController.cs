@@ -13,9 +13,11 @@ public class ContactController : Controller
     private readonly IConfiguration _configuration;
     private readonly ILogger<ContactController> _logger;
     private readonly PortfolioContext _portfolioContext;
-    public ContactController(PortfolioContext portfolioContext)
+    public ContactController(PortfolioContext portfolioContext, IConfiguration configuration, ILogger<ContactController> logger)
     {
         _portfolioContext = portfolioContext;
+        _configuration = configuration;
+        _logger = logger;
     }
     public IActionResult ContactList()
 	{
@@ -38,11 +40,6 @@ public class ContactController : Controller
 	}
 
 	// SEND ACTIONS
-	public ContactController(IConfiguration configuration, ILogger<ContactController> logger)
-    {
-        _configuration = configuration;
-        _logger = logger;
-    }
 
     [HttpPost]
     public IActionResult SendEmail(string contactName, string contactEmail, string contactSubject, string contactMessage)

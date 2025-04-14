@@ -21,8 +21,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\images\socialMediaImages\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\Images\bg-main.jpg" />
+    <None Include="wwwroot\images\bg-main.jpg" />
   </ItemGroup>
 </Project>

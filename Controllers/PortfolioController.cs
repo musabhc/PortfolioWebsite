@@ -11,9 +11,10 @@ namespace MyPortfolioWebsite.Controllers
         
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
-        public PortfolioController(PortfolioContext portfolioContext)
+        public PortfolioController(PortfolioContext portfolioContext, FileUploadService fileUploadService)
         {
             _context = portfolioContext;
+            _fileUploadService = fileUploadService;
         }
         public IActionResult PortfolioList()
         {

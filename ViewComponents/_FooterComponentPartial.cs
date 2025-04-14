@@ -6,6 +6,10 @@ namespace MyPortfolioWebsite.ViewComponents
     public class _FooterComponentPartial : ViewComponent
     {
         private readonly PortfolioContext _portfolioContext;
+        public _FooterComponentPartial(PortfolioContext portfolioContext)
+        {
+            _portfolioContext = portfolioContext;
+        }
         public IViewComponentResult Invoke()
         {
             var values = _portfolioContext.SocialMedias.ToList();
