@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
-	public class SkillController : Controller
+    [Authorize(Roles = "Admin")]
+    public class SkillController : Controller
 	{
 		private readonly PortfolioContext _portfolioContext;
         public SkillController(PortfolioContext portfolioContext)

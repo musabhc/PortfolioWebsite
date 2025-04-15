@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -7,12 +8,14 @@ using MyPortfolioWebsite.DAL.Entities;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
-
+[Authorize(Roles = "Admin")]
 public class ContactController : Controller
 {
+
     private readonly IConfiguration _configuration;
     private readonly ILogger<ContactController> _logger;
     private readonly PortfolioContext _portfolioContext;
+
     public ContactController(PortfolioContext portfolioContext, IConfiguration configuration, ILogger<ContactController> logger)
     {
         _portfolioContext = portfolioContext;

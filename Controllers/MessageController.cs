@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace MyPortfolioWebsite.Controllers
 {
-	public class MessageController : Controller
+    [Authorize(Roles = "Admin")]
+    public class MessageController : Controller
 	{
         private readonly PortfolioContext _portfolioContext;
         public MessageController(PortfolioContext portfolioContext)

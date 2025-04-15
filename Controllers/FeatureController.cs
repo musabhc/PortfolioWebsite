@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
-	public class FeatureController : Controller
+    [Authorize(Roles = "Admin")]
+    public class FeatureController : Controller
 	{
         private readonly PortfolioContext _portfolioContext;
         public FeatureController(PortfolioContext portfolioContext)

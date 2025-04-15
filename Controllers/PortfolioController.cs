@@ -3,9 +3,11 @@
 using MyPortfolioWebsite.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyPortfolioWebsite.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PortfolioController : Controller
     {
         

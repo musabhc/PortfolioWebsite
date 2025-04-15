@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyPortfolioWebsite.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StatisticController : Controller
     {
         private readonly PortfolioContext _context;

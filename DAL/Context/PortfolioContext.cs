@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyPortfolioWebsite.DAL.Entities;
 
-public class PortfolioContext : DbContext
+public class PortfolioContext : IdentityDbContext<ApplicationUser>
 {
     private readonly IConfiguration _configuration;
 

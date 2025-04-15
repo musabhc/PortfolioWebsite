@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPortfolioWebsite.DAL.Entities;
 
 namespace MyPortfolioWebsite.Controllers
 {
-	public class TestimonialController : Controller
+    [Authorize(Roles = "Admin")]
+    public class TestimonialController : Controller
 	{
 		private readonly PortfolioContext _context;
 		private readonly FileUploadService _fileUploadService;
